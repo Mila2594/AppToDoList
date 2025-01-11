@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AppToDoList.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AppToDoList"
+    Title="AppToDoList"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.TabBarIsVisible="False">
+
+    <Shell.FlyoutHeader>
+        <VerticalStackLayout
+            Padding="15"
+            BackgroundColor="{StaticResource Primary}"
+            VerticalOptions="CenterAndExpand">
+            <Image HeightRequest="120" Source="icon_list.sbg" />
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                HorizontalTextAlignment="Center"
+                Text="To Do List"
+                TextColor="White" />
+
+        </VerticalStackLayout>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Icon="home.svg"
+            Route="MainPage" />
+
+        <ShellContent
+            Title="Editar Lista"
+            ContentTemplate="{DataTemplate local:EditListPage}"
+            Icon="icon_addtask.svg"
+            Route="EditListPage" />
+
+    </FlyoutItem>
+
+    <Shell.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="icon_list.svg"
+            Order="Primary"
+            Priority="0" />
+    </Shell.ToolbarItems>
+
+
+
+
+
+</Shell>

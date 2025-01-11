@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppToDoList.EditListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Editar Lista">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <VerticalStackLayout Grid.Row="0">
+            <Label
+                x:Name="statusList_Lavel"
+                Padding="0,12,0,0"
+                FontAttributes="Bold"
+                FontSize="22"
+                SemanticProperties.Description="Este es el encabezado de la lista de tareas"
+                SemanticProperties.HeadingLevel="Level2"
+                Style="{StaticResource Headline}"
+                Text="La lista está vacía"
+                TextColor="#757575" />
+
+            <ScrollView Padding="8" VerticalOptions="FillAndExpand">
+                <ListView
+                    x:Name="taskList_ListView"
+                    IsVisible="True"
+                    SelectionMode="None">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <HorizontalStackLayout Padding="5">
+                                    <CheckBox IsChecked="{Binding IsCompleted}" />
+                                    <Label
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{Binding TaskText}"
+                                        TextColor="{Binding PriorityColor}"
+                                        VerticalOptions="CenterAndExpand" />
+                                </HorizontalStackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+
+        </VerticalStackLayout>
+
+        <!--  Contenido principal  -->
+        <VerticalStackLayout
+            Grid.Row="1"
+            Padding="0"
+            VerticalOptions="EndAndExpand">
+            <!--  Coloca el Frame en la parte inferior  -->
+            <Frame
+                Padding="20,10"
+                BackgroundColor="White"
+                HorizontalOptions="Center"
+                WidthRequest="330">
+
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="18"
+                        Text="Tarea:"
+                        TextColor="#757575" />
+                    <Entry x:Name="taskNameEntry" Placeholder="Ingrese el nombre de la tarea" />
+
+                    <Label
+                        Margin="0,20,0,10"
+                        FontSize="18"
+                        Text="Prioridad:"
+                        TextColor="#757575" />
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <CheckBox x:Name="priorityCheckBox1" CheckedChanged="OnPriorityCheckBoxChanged" />
+                        <Label
+                            Margin="5,0"
+                            Text="Alta"
+                            TextColor="Black"
+                            VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{x:Reference priorityCheckBox1}" Tapped="OnPriorityLabelTapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <CheckBox x:Name="priorityCheckBox2" CheckedChanged="OnPriorityCheckBoxChanged" />
+                        <Label
+                            Margin="5,0"
+                            Text="Media"
+                            TextColor="Black"
+                            VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{x:Reference priorityCheckBox2}" Tapped="OnPriorityLabelTapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <CheckBox x:Name="priorityCheckBox3" CheckedChanged="OnPriorityCheckBoxChanged" />
+                        <Label
+                            Margin="5,0"
+                            Text="Baja"
+                            TextColor="Black"
+                            VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{x:Reference priorityCheckBox3}" Tapped="OnPriorityLabelTapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+
+                    <Button
+                        Margin="37,10,37,5"
+                        Padding="4"
+                        Clicked="OnAddTaskClicked"
+                        HorizontalOptions="Fill"
+                        Text="Agregar" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button
+                Margin="90,25"
+                Padding="4"
+                Clicked="OnCloseClicked"
+                HorizontalOptions="Fill"
+                Text="Cerrar" />
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>

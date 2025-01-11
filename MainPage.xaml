@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppToDoList.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="To Do List">
+
+    <!--  Grid con dos filas  -->
+    <Grid RowDefinitions="*,Auto">
+        <!--  Contenido principal en la primera fila  -->
+        <VerticalStackLayout Grid.Row="0">
+            <Label
+                x:Name="statusList_Lavel"
+                Padding="0,12,0,0"
+                FontAttributes="Bold"
+                FontSize="22"
+                SemanticProperties.Description="Este es el encabezado de la lista de tareas"
+                SemanticProperties.HeadingLevel="Level2"
+                Style="{StaticResource Headline}"
+                Text="La lista está vacía"
+                TextColor="#757575" />
+
+            <Grid VerticalOptions="FillAndExpand">
+                <ScrollView Padding="8" VerticalOptions="FillAndExpand">
+                    <ListView
+                        x:Name="taskList_ListView"
+                        IsVisible="False"
+                        SelectionMode="None">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <HorizontalStackLayout Padding="5">
+                                        <CheckBox CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding IsCompleted}" />
+                                        <Label
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding TaskText}"
+                                            TextColor="{Binding PriorityColor}"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="OnLabelTapped" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </HorizontalStackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+                <Image
+                    x:Name="emptyIcon"
+                    HeightRequest="300"
+                    HorizontalOptions="Center"
+                    IsVisible="True"
+                    Opacity="0.4"
+                    Source="icon_list_ligthgray.svg"
+                    VerticalOptions="Center"
+                    WidthRequest="250" />
+            </Grid>
+        </VerticalStackLayout>
+
+        <!--  segunda fila para que el botón esté al final  -->
+        <Button
+            x:Name="EditListBtn"
+            Grid.Row="1"
+            Margin="90,25"
+            Padding="4"
+            Clicked="OnEditListClicked"
+            HorizontalOptions="Fill"
+            MinimumHeightRequest="44"
+            MinimumWidthRequest="44"
+            SemanticProperties.Hint="Para editar o agregar la lista de tareas, presiona el botón"
+            Text="Editar Lista" />
+    </Grid>
+
+
+</ContentPage>

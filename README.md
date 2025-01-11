@@ -1,10 +1,9 @@
 # To Do List
 
-**To Do List** es una aplicación móvil básica para Android, desarrollada en **Visual Studio** utilizando **.NET MAUI**. Este proyecto tiene como objetivo principal el aprendizaje de las funcionalidades esenciales para gestionar tareas a través de listas, y practicar el uso de **menú flotante** y navegación en aplicaciones móviles.
-
+**To Do List** es una aplicación móvil básica para Android, desarrollada en **Visual Studio** utilizando **.NET MAUI**. Este proyecto tiene como objetivo principal el aprendizaje de las funcionalidades esenciales para gestionar tareas a través de listas.
 ## 📝 Descripción
 
-La aplicación permite gestionar tareas en una lista de pendientes. Ofrece dos vistas principales: una para visualizar las tareas (home) y otra para crear nuevas tareas. Cada tarea puede ser marcada como completada o eliminada. La navegación entre las vistas se realiza mediante un **menú flotante**.
+La aplicación permite gestionar tareas en una lista de pendientes. Ofrece dos vistas principales: una para visualizar las tareas (home) y otra para crear nuevas tareas. Cada tarea puede ser marcada como completada o eliminada.
 
 ## ✨ Características
 
